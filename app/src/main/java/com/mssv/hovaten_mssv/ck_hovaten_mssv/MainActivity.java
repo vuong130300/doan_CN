@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         addControls();
-        readData();
+        //readData(); //bug: cannot load data
     }
 
     private void addControls() {
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void readData() {
         database = Database.initDatabase(this, DATABASE_NAME);
-        Cursor cursor = database.rawQuery("SELECT * FROM monan", null);
+        Cursor cursor = database.rawQuery("SELECT * FROM monan1", null);//bug: cannot load data
         list.clear();
         for (int i = 0; i < cursor.getCount(); i++) {
             cursor.moveToPosition(i);
