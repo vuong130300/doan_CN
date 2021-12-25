@@ -61,9 +61,10 @@ public class MonanAdapter extends BaseAdapter {
             builder.setIcon(android.R.drawable.ic_delete);
             builder.setTitle("Xóa Món Ăn");
             builder.setMessage("Bạn có muốn xóa?");
-            builder.setPositiveButton("có", (dialog, which) -> delete(monan.getMa()));
-            builder.setNegativeButton("không", (dialog, which) -> {
-            });
+//            builder.setPositiveButton("có", (dialog, which) -> delete(monan.getMa()));
+//            builder.setNegativeButton("không", (dialog, which) -> {
+//            });
+            //bug mất nút xóa
             AlertDialog dialog = builder.create();
             dialog.show();
             return false;
@@ -72,9 +73,10 @@ public class MonanAdapter extends BaseAdapter {
     }
 
     private void delete(int id) {
-        SQLiteDatabase database = Database.initDatabase(context, DATABASE_NAME);
+//        SQLiteDatabase database = Database.initDatabase(context, DATABASE_NAME);
+        //bug : ket noi database
         database.delete("monan", "ma = ?", new String[]{id + ""});
-        list.clear();
+//        list.clear();
         Cursor cursor = database.rawQuery("SELECT * FROM monan", null);
         while (cursor.moveToNext()) {
             int ma = cursor.getInt(0);
