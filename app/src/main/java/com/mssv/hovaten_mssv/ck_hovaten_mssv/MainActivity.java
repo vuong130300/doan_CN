@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             cursor.moveToPosition(i);
             int ma = cursor.getInt(0);
             String tenmonan = cursor.getString(1);
-            String loaimonan = cursor.getString(2);
+            int loaimonan = cursor.getString(2); //bug:type not found
 
             list.add(new Monan(ma, tenmonan, loaimonan));
         }
